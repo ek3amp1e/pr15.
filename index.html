@@ -193,5 +193,20 @@
                 location.reload(); // Обновляем страницу после 2-секундной задержки
             }, 2000);
         }
+        function gameOver() {
+            const buttons = document.querySelectorAll("button");
+            buttons.forEach(button => {
+                if (button.classList.contains("reloadButton")) {
+                    button.disabled = false; // Сделать кнопку "Играть снова" активной
+                } else {
+                    button.disabled = true; // Остальные кнопки оставить неактивными
+                }
+            });
+            clearInterval(scoreInterval);
+            const gameOverMessage = document.getElementById("gameOverMessage");
+            gameOverMessage.style.display = "block";
+            const reloadButton = document.getElementById("reloadButton");
+            reloadButton.style.display = "block";
+        }
 
 	</script>
