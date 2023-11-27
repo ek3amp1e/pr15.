@@ -96,5 +96,25 @@
                 state.innerText = "0";
             });
         }
+        function openGate() {
+
+            if (buttonDisabled) {
+                return; // Если кнопки заблокированы, не выполняем действия
+            }
+
+            buttonDisabled = true;
+
+            clearInterval(scoreInterval);
+
+            const inputA = parseInt(document.getElementById("stateA").innerText);
+            const inputB = parseInt(document.getElementById("stateB").innerText);
+            const inputC = parseInt(document.getElementById("stateC").innerText);
+
+            let isGateOpen = false;
+
+            switch (currentLevel) {
+                case 1:
+                    isGateOpen = (inputA && inputB) && !inputC;
+                    break;
 
 	</script>
