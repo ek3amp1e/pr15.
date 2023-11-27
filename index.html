@@ -29,4 +29,22 @@
 
         // Запускаем таймер счета при загрузке страницы
         startScoreTimer();
+        function toggleValue(inputId) {
+            if (!buttonDisabled) {
+                const input = document.getElementById("state" + inputId[inputId.length - 1]);
+                const button = document.querySelector("button[data-input='" + inputId[inputId.length - 1] + "']");
+                if (input.innerText === '1') {
+                    input.innerText = '0';
+                    button.setAttribute("data-state", "0");
+                } else {
+                    input.innerText = '1';
+                    button.setAttribute("data-state", "1");
+                }
+                updateGateFunction();
+                buttonDisabled = true;
+                setTimeout(function () {
+                    buttonDisabled = false;
+                }, buttonDelay);
+            }
+        }
 	</script>
