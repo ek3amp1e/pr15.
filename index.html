@@ -1,3 +1,12 @@
 <script>
-	
+	let score = 999; // Изначальный счет
+        let scoreInterval; // Переменная для хранения интервала обновления счета
+
+        let buttonDisabled = false; // Флаг, показывающий, можно ли нажимать кнопки
+        const buttonDelay = 700; // Задержка в миллисекундах (в данном случае, 2 секунды)
+
+        let currentLevel = 1;
+        function updateScoreDisplay() {
+            const scoreElement = document.getElementById("score");
+            scoreElement.innerText = `Счет: ${score}`;
 	</script>
