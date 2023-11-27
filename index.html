@@ -144,5 +144,17 @@
                     isGateOpen = !(inputA && inputB && inputC) && (inputA && inputB);
                     break;
             }
+            if (isGateOpen) {
+                const gate = document.getElementById("gate");
+                gate.style.backgroundImage = "url('magic-portal.png')";
+                if (currentLevel === 10){
+                    document.querySelector("h1").innerText = "Вы достигли ультиматива!";
+                } else {
+                    document.querySelector("h1").innerText = "Портал открыт! Переход к следующему уровню...";
+                }
+                currentLevel++;
+                if (currentLevel > 10) {
+                    // Пользователь прошел последний уровень
+                    congratulateUser();
 
 	</script>
