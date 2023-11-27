@@ -17,4 +17,16 @@
                 updateGateFunction();
             }, 700);
         }
+        function startScoreTimer() {
+            scoreInterval = setInterval(function() {
+                score -= 1; // Уменьшаем счет на 10 каждую секунду
+                updateScoreDisplay();
+                if (score <= 0) {
+                    gameOver();
+                }
+            }, 100); // Запускаем интервал каждую секунду
+        }
+
+        // Запускаем таймер счета при загрузке страницы
+        startScoreTimer();
 	</script>
