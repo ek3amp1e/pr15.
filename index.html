@@ -83,5 +83,18 @@
                     break;
             }
         }
+        function resetButtons() {
+            const buttons = document.querySelectorAll("button");
+            const states = document.querySelectorAll("[id^='state']");
+
+            buttons.forEach(button => {
+                button.disabled = false;
+                button.setAttribute("data-state", "0"); 
+            });
+
+            states.forEach(state => {
+                state.innerText = "0";
+            });
+        }
 
 	</script>
