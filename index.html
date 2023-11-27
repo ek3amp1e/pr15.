@@ -96,5 +96,90 @@
                 state.innerText = "0";
             });
         }
+        function openGate() {
+
+            if (buttonDisabled) {
+                return; // Если кнопки заблокированы, не выполняем действия
+            }
+
+            buttonDisabled = true;
+
+            clearInterval(scoreInterval);
+
+            const inputA = parseInt(document.getElementById("stateA").innerText);
+            const inputB = parseInt(document.getElementById("stateB").innerText);
+            const inputC = parseInt(document.getElementById("stateC").innerText);
+
+            let isGateOpen = false;
+
+            switch (currentLevel) {
+                case 1:
+                    isGateOpen = (inputA && inputB) && !inputC;
+                    break;
+                case 2:
+                    isGateOpen = inputA && (inputC && !inputB || !inputC && inputB) && inputC;
+                    break;
+                case 3:
+                    isGateOpen = (!inputA || !inputB) && !inputC && inputB;
+                    break;
+                case 4:
+                    isGateOpen = !(!(inputB && inputC) || !(inputA && inputB));
+                    break;
+                case 5:
+                    isGateOpen = (inputA && !inputB || !inputA && inputB) && (inputA && !inputB) && inputC;
+                    break;
+                case 6:
+                    isGateOpen = ((inputA && inputB) && inputB) && (inputC && !inputB || !inputC && inputB);
+                    break;
+                case 7:
+                    isGateOpen = !((inputA && inputB) || !(inputB && inputC));
+                    break;
+                case 8:
+                    isGateOpen = ((inputA && !inputB || !inputA && inputB) && (!inputB && inputC));
+                    break;
+                case 9:
+                    isGateOpen = !((inputA && !inputB) || !(inputA && inputC));
+                    break;
+                case 10:
+                    isGateOpen = !(inputA && inputB && inputC) && (inputA && inputB);
+                    break;
+            }
+            if (isGateOpen) {
+                const gate = document.getElementById("gate");
+                gate.style.backgroundImage = "url('magic-portal.png')";
+                if (currentLevel === 10){
+                    document.querySelector("h1").innerText = "Вы достигли ультиматива!";
+                } else {
+                    document.querySelector("h1").innerText = "Портал открыт! Переход к следующему уровню...";
+                }
+                currentLevel++;
+                if (currentLevel > 10) {
+                    // Пользователь прошел последний уровень
+                    congratulateUser();
+                    } else {
+                    setTimeout(function () {
+                        updateGateFunction();
+                        resetButtons();
+                        resetGate();
+                        startScoreTimer();
+                    }, 700);
+                }
+            } else {
+                const gate = document.getElementById("gate");
+                gate.style.backgroundImage = "url('magic-gate.png')";
+                document.querySelector("h1").innerText = "Портал закрыт!";
+                setTimeout(function () {
+                    document.querySelector("h1").innerText = "Нажимайте кнопки, чтобы изменить значения A, B и C и открыть портал";
+                }, 700);
+                score -= 100;
+                updateScoreDisplay();
+                startScoreTimer();
+            }
+
+            updateCurrentLevel();
+            setTimeout(function () {
+                buttonDisabled = false;
+            }, buttonDelay);
+        }
 
 	</script>
