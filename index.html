@@ -156,5 +156,30 @@
                 if (currentLevel > 10) {
                     // Пользователь прошел последний уровень
                     congratulateUser();
+                    } else {
+                    setTimeout(function () {
+                        updateGateFunction();
+                        resetButtons();
+                        resetGate();
+                        startScoreTimer();
+                    }, 700);
+                }
+            } else {
+                const gate = document.getElementById("gate");
+                gate.style.backgroundImage = "url('magic-gate.png')";
+                document.querySelector("h1").innerText = "Портал закрыт!";
+                setTimeout(function () {
+                    document.querySelector("h1").innerText = "Нажимайте кнопки, чтобы изменить значения A, B и C и открыть портал";
+                }, 700);
+                score -= 100;
+                updateScoreDisplay();
+                startScoreTimer();
+            }
+
+            updateCurrentLevel();
+            setTimeout(function () {
+                buttonDisabled = false;
+            }, buttonDelay);
+        }
 
 	</script>
