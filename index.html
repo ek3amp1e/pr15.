@@ -9,4 +9,12 @@
         function updateScoreDisplay() {
             const scoreElement = document.getElementById("score");
             scoreElement.innerText = `Счет: ${score}`;
+        }
+        function updateCurrentLevel() {
+            setTimeout(function() {
+                const levelElement = document.getElementById("currentLevel");
+                levelElement.innerText = currentLevel;
+                updateGateFunction();
+            }, 700);
+        }
 	</script>
