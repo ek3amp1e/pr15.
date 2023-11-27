@@ -47,4 +47,17 @@
                 }, buttonDelay);
             }
         }
+        function updateGateFunction() {
+            const gateFunction = document.getElementById("gateFunction");
+
+            switch (currentLevel) {
+                case 1:
+                    gateFunction.innerText = "A ∧ B ∧ ¬C";
+                    break;
+                case 2:
+                    gateFunction.innerText = "A ∧ (C ⊕ B) ∧ C";
+                    break;
+                case 3:
+                    gateFunction.innerText = "(A → ¬B) ∧ ¬C ∧ B";
+                    break;
 	</script>
