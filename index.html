@@ -131,5 +131,18 @@
                 case 6:
                     isGateOpen = ((inputA && inputB) && inputB) && (inputC && !inputB || !inputC && inputB);
                     break;
+                case 7:
+                    isGateOpen = !((inputA && inputB) || !(inputB && inputC));
+                    break;
+                case 8:
+                    isGateOpen = ((inputA && !inputB || !inputA && inputB) && (!inputB && inputC));
+                    break;
+                case 9:
+                    isGateOpen = !((inputA && !inputB) || !(inputA && inputC));
+                    break;
+                case 10:
+                    isGateOpen = !(inputA && inputB && inputC) && (inputA && inputB);
+                    break;
+            }
 
 	</script>
